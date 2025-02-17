@@ -36,8 +36,8 @@
         }
         .word {
             display: flex;
-            gap: 5px; /* Jarak antar huruf */
-            margin: 0 15px; /* Jarak antar kata */
+            gap: 5px;
+            margin: 0 15px;
         }
         .letter {
             opacity: 0;
@@ -184,9 +184,8 @@
 
         animate();
 
-        // Fungsi untuk memecah kata menjadi huruf dan menerapkan animasi fade-in secara random
         function createTextEffect(text, container) {
-            container.innerHTML = ""; // Clear existing content
+            container.innerHTML = "";
             text.split(" ").forEach(word => {
                 let wordSpan = document.createElement("span");
                 wordSpan.classList.add("word");
@@ -202,44 +201,40 @@
             });
         }
 
-        // Fungsi untuk fade out teks
         function fadeOutText(container, callback) {
             const letters = container.querySelectorAll(".letter");
             letters.forEach(letter => {
                 letter.style.animation = `fadeOut 2s ease-in-out forwards`;
             });
-            setTimeout(callback, 2000); // Wait for fade out to complete
+            setTimeout(callback, 2000);
         }
 
-        // Fungsi untuk fade in teks
         function fadeInText(text, container) {
             createTextEffect(text, container);
             const letters = container.querySelectorAll(".letter");
             letters.forEach(letter => {
-                const delay = Math.random() * 2 + 0.5; // Delay random antara 0.5 - 2.5 detik
+                const delay = Math.random() * 2 + 0.5;
                 letter.style.animation = `fadeIn 2s ease-in-out forwards`;
                 letter.style.animationDelay = `${delay}s`;
             });
         }
-
-        // Menambahkan teks dengan animasi fade-in random per huruf
+        
         document.addEventListener("DOMContentLoaded", () => {
             const textContainer = document.getElementById("text-container");
             createTextEffect("Happy Birthday, Cynthia", textContainer);
             
             const letters = textContainer.querySelectorAll(".letter");
             letters.forEach(letter => {
-                const delay = Math.random() * 2 + 0.5; // Delay random antara 0.5 - 2.5 detik
+                const delay = Math.random() * 2 + 0.5;
                 letter.style.animation = `fadeIn 2s ease-in-out forwards`;
                 letter.style.animationDelay = `${delay}s`;
             });
 
-            // Set timeout untuk fade out dan kemudian fade in teks baru
             setTimeout(() => {
                 fadeOutText(textContainer, () => {
                     fadeInText("Best regards, Hikmat", textContainer);
                 });
-            }, 5000); // Tunggu 5 detik sebelum memulai fade out
+            }, 5000);
         });
     </script>
 </body>
